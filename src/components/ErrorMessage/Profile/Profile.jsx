@@ -12,6 +12,7 @@ export default function Feed(){
     async function handleAddPost (post){
      
       const data = await postsAPI.create(post);
+      getPosts();
       console.log(data)
     }
   
@@ -28,12 +29,21 @@ export default function Feed(){
     useEffect(() => {
         getPosts();
     }, [])
+
+    const removePost = async (postId) => {
+        try {
+            const data = await postsAPI.removePost(postId);
+            const postArray = await posts.filter(post => post._id !== postId);
+            setPosts(postArray);
+        } catch(err) {
+            console.log(err, "error from removePost")
+        }
+    }
     
       return (
           <>
-           <PageHeader />
           <AddPost handleAddPost={handleAddPost}/>
-          <ProfileGames posts={posts}/>
+          <ProfileGames posts={posts} removePost={removePost}/>
           </>
       )
   }

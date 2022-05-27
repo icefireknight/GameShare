@@ -5,6 +5,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import ProfilePage from '../ProfilePage/ProfilePage';
+import PageHeader from '../../components/ErrorMessage/Header/Header'
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -22,6 +23,8 @@ function App() {
 
   if (user) {
     return (
+      <>
+      <PageHeader handleLogout={handleLogout} />
       <Routes>
         {/* <Route path="/">
           <FeaturedGames />
@@ -43,11 +46,13 @@ function App() {
           element={<ProfilePage/>}
         />
       </Routes>
+      </>
       
     );
   }
 
   return (
+    <>
     <Routes>
       <Route
         path="/login"
@@ -59,6 +64,8 @@ function App() {
       />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
+    {/* <PageHeader handleLogout={handleLogout} /> */}
+    </>
   );
 }
 

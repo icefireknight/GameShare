@@ -3,11 +3,13 @@ import React from 'react';
 import { Header, Segment} from 'semantic-ui-react';
 
 
-export default function PageHeader(){
+export default function PageHeader({handleLogout}){
     return (
         <Segment>
             <Header as='h2' >
-              This is the HEADER!
+              <button onClick={handleLogout}>
+                  Sign Out
+              </button>
             </Header>
         </Segment>
     )

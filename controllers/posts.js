@@ -9,7 +9,8 @@ const s3 = new S3(); // initialize s3 constructor
 
 module.exports = {
     create,
-    index
+    index,
+    delete:deletePost
 }
 
 function create(req, res) {
@@ -37,11 +38,22 @@ function create(req, res) {
 }
 
 async function index(req, res){
+    console.log(req.user,"req.user")
     try{
-    const posts = await Post.find({}).exec();
+    const posts = await Post.find({user:req.user._id}).exec();
     console.log(posts);
     res.status(201).json({ posts });
     } catch (err){
       res.status(400).json({ err });
     }
     }
+
+async function deletePost(req, res){
+    try{
+        const post = await Post.findByIdAndDelete(req.params.id);
+        res.status(201).json({ post });
+    }
+    catch (err){
+        res.status(400).json({ err });
+    }
+}

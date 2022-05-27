@@ -1,6 +1,6 @@
 import tokenService from './tokenService';
 
-const BASE_URL = '/api/posts';
+const BASE_URL = '/api/posts/';
 
 export function create(post) {
     return fetch(BASE_URL, {
@@ -15,7 +15,20 @@ export function create(post) {
 
   export function getAll() {
     return fetch(BASE_URL, {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+    })
+    .then(res => res.json());
+  }
+
+  export function removePost(id){
+    return fetch(`${BASE_URL}${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        }
     })
     .then(res => res.json());
   }

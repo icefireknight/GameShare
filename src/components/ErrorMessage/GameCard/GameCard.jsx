@@ -1,9 +1,11 @@
 import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-function GameCard({ post, isProfile, user }) {
+function GameCard({ post, isProfile, user, removePost }) {
 
-
+function handleClick(e){
+    removePost(e.target.id)
+}
 console.log(post);
   return (
     <Card key={post._id} raised>
@@ -34,6 +36,7 @@ console.log(post);
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
       </Card.Content>
+      <button id={post._id} onClick={handleClick}>delete</button>
     </Card>
   );
 }

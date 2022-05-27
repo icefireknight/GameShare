@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react'
 import GameCard from '../GameCard/GameCard'
 
-export default function Games({posts, numPhotosCol, isProfile, loading, user }){
+export default function Games({posts, numPhotosCol, isProfile, loading, user, removePost }){
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
@@ -21,6 +21,7 @@ export default function Games({posts, numPhotosCol, isProfile, loading, user }){
               key={post._id}
               isProfile={isProfile}
               user={user}
+              removePost={removePost}
             />
           );
         })}
