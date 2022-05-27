@@ -1,3 +1,5 @@
+const Post = require("../models/post")
+
 const S3 = require('aws-sdk/clients/s3');
 const { v4: uuidv4 } = require('uuid'); // import uuid to generate random ID's
 
@@ -6,8 +8,7 @@ const s3 = new S3(); // initialize s3 constructor
 
 
 module.exports = {
-    create,
-    index
+    create
 }
 
 function create(req, res) {
@@ -24,7 +25,7 @@ function create(req, res) {
       const post = await Post.create({
         name: req.body.name,
         photoUrl: data.Location,
-        user: req.user
+        user: req.user._id
       });
 
       res.status(201).json({ post: post });

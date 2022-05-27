@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from '../Header/Header';
 import AddPost from '../AddGame/AddGame';
-import PostFeed from '../ProfileGames/ProfileGames'; 
+import ProfileGames from '../ProfileGames/ProfileGames'; 
 import * as postsAPI from '../../../utils/postApi';
 
 
@@ -20,7 +20,7 @@ export default function Feed(){
           <>
            <PageHeader />
           <AddPost handleAddPost={handleAddPost}/>
-          <PostFeed/>
+          <ProfileGames/>
           </>
       )
   }

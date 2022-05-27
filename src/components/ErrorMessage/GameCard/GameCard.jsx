@@ -3,9 +3,6 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 function GameCard({ post, isProfile, user }) {
 
-  const likeIndex = post.likes.findIndex(
-    (like) => like.username === user.username
-  );
 
 
   return (
@@ -41,5 +38,5 @@ function GameCard({ post, isProfile, user }) {
   );
 }
 
-
+// console.log(post, `<- post, if it exists`)
 export default GameCard;
