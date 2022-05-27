@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function GameCard({ post, isProfile, user }) {
 
 
-
+console.log(post);
   return (
     <Card key={post._id} raised>
-      {isProfile ? (
+      {/* {isProfile ? (
         ""
       ) : (
         <Card.Content textAlign="left">
@@ -26,7 +26,7 @@ function GameCard({ post, isProfile, user }) {
             </Link>
           </Card.Header>
         </Card.Content>
-      )}
+      )} */}
 
       <Image src={`${post.photoUrl}`} wrapped ui={false} />
       <Card.Content>

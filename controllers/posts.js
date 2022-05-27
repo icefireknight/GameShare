@@ -8,7 +8,8 @@ const s3 = new S3(); // initialize s3 constructor
 
 
 module.exports = {
-    create
+    create,
+    index
 }
 
 function create(req, res) {
@@ -34,3 +35,13 @@ function create(req, res) {
     }
   });
 }
+
+async function index(req, res){
+    try{
+    const posts = await Post.find({}).exec();
+    console.log(posts);
+    res.status(201).json({ posts });
+    } catch (err){
+      res.status(400).json({ err });
+    }
+    }

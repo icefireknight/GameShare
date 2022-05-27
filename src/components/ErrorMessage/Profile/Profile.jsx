@@ -15,12 +15,25 @@ export default function Feed(){
       console.log(data)
     }
   
+    async function getPosts (){
+        try {
+            const data = await postsAPI.getAll();
+            console.log(data);
+            setPosts([...data.posts])
+        }
+        catch(err){
+            console.log(err,'This error is from getPosts function');
+        }
+    }
+    useEffect(() => {
+        getPosts();
+    }, [])
     
       return (
           <>
            <PageHeader />
           <AddPost handleAddPost={handleAddPost}/>
-          <ProfileGames/>
+          <ProfileGames posts={posts}/>
           </>
       )
   }
