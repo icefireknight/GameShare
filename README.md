@@ -4,7 +4,7 @@ GameShare is an app built to let you keep track of games that you currently own.
 
 
 #### Get Started
-[GameShare](https://game-lists.herokuapp.com/)
+[GameShare](https://melodious-boba-5a1e80.netlify.app/)
 [Trello Board](https://trello.com/b/yQI1q60h/capstone-projectgame-finder)
 
 
